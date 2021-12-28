@@ -20,8 +20,8 @@
                 <th scope="row">{{ $user->id }}</th>
                 <td>{{ $user->email }}</td>
                 <td>{{ $user->name }}</td>
-                <td>-</td>
-                <td></td>
+                <td>{{$user->surname}}</td>
+                <td>{{$user->phone_number}}</td>
             </tr>
         @endforeach
         </tbody>
