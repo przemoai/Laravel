@@ -10,7 +10,7 @@
             <th scope="col">E-mail</th>
             <th scope="col">Imie</th>
             <th scope="col">Nawisko</th>
-            <th scope="col">Akcje</th>
+            <th scope="col">Numer telefonu</th>
         </tr>
         </thead>
         <tbody>
@@ -26,5 +26,6 @@
         @endforeach
         </tbody>
     </table>
+    {{ $users->links() }}
 </div>
 @endsection
