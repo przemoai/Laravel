@@ -81,10 +81,11 @@
     </div>
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+
     <script type="text/javascript">
         @yield('javascript')
     </script>
+    @yield('js-files')
 
 </body>
 </html>

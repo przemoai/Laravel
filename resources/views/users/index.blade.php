@@ -35,21 +35,9 @@
 </div>
 @endsection
 @section('javascript')
+    const deleteUrl = "{{url('users')}}/";
+@endsection
 
-    $(function(){
-        $('.delete').click(function (){
-            $.ajax({
-                type:"DELETE",
-                method: "DELETE",
-                url: "http://harnasik.test:8080/users/"+$(this).data("id"),
-                //data: { id: $(this).data("id")}
-                })
-            .done(function(response) {
-                window.location.reload();
-            })
-            .fail(function (response){
-                alert("ERROR");
-            });
-        });
-    });
+@section('js-files')
+    <script src="{{ asset('js/delete.js') }}"></script>
 @endsection
