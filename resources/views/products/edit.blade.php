@@ -8,7 +8,7 @@
                 <div class="card-header">Edycja produktu</div>
 
                 <div class="card-body">
-                    <form method="GET" action="{{ route('products.update',$product->id) }}">
+                    <form method="POST" action="{{ route('products.update',$product->id) }}" enctype="multipart/form-data">
                         @csrf
 
                         <div class="row mb-3">
@@ -26,12 +26,18 @@
                         </div>
 
                         <div class="row mb-3">
+                            <label for="image" class="col-md-4 col-form-label text-md-right">Grafika</label>
+
+                            <div class="col-md-6">
+                                <input id="image" name="image" type="file" class="form-control @error('image') is-invalid @enderror" >
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
                             <label for="description" class="col-md-4 col-form-label text-md-right">Opis</label>
 
                             <div class="col-md-6">
-                                <textarea id="description" maxlength="1000" class="form-control @error('description') is-invalid @enderror" name="description" autofocus={{ $product->description }}>
-
-                                </textarea>
+                                <textarea id="description" maxlength="1000" class="form-control @error('description') is-invalid @enderror" name="description">{{ $product->description }}</textarea>
                                 @error('description')
                                 <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
