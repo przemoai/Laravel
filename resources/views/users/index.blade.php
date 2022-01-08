@@ -7,10 +7,10 @@
         <thead>
         <tr>
             <th scope="col">#</th>
-            <th scope="col">E-mail</th>
-            <th scope="col">Imie</th>
-            <th scope="col">Nawisko</th>
-            <th scope="col">Numer telefonu</th>
+            <th scope="col">{{__('harnasik.user.email')}}</th>
+            <th scope="col">{{__('harnasik.user.first_name')}}</th>
+            <th scope="col">{{__('harnasik.user.last_name')}}</th>
+            <th scope="col">{{__('harnasik.user.phone')}}</th>
         </tr>
         </thead>
         <tbody>
@@ -36,7 +36,7 @@
 @endsection
 @section('javascript')
     const deleteUrl = "{{url('users')}}/";
-    const confirmDelete = "{{ __('tlumaczenie.messages.confirm_delete') }}" ;
+    const confirmDelete = "{{ __('harnasik.messages.confirm_delete') }}" ;
 @endsection
 
 @section('js-files')

@@ -12,6 +12,14 @@ return [
         'edit' => "Edycja",
 
     ],
+    'user' => [
+        'email' => "Email",
+        'first_name' => 'Imię',
+        'last_name' => 'Nazwisko',
+        'phone' => 'Nr telefonu',
+    ]
+
+    ,
     'product' => [
         'fields'=> [
 
