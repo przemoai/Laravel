@@ -4,7 +4,7 @@
 <div class="container">
         <div class="row text-white">
             <div class="col-6">
-                <h1>Lista Produktów</h1>
+                <h1>{{__('tlumaczenie.product.add.header')}}</h1>
             </div>
             <div class="col-6 ">
                 <a class="float-end" href="{{route('products.create')}}">
@@ -19,10 +19,10 @@
                 <thead>
                 <tr>
                     <th scope="col">#</th>
-                    <th scope="col">Nazwa</th>
-                    <th scope="col">Opis</th>
-                    <th scope="col">Ilość</th>
-                    <th scope="col">Cena</th>
+                    <th scope="col">{{__('tlumaczenie.product.fields.name')}}</th>
+                    <th scope="col">{{__('tlumaczenie.product.fields.description')}}</th>
+                    <th scope="col">{{__('tlumaczenie.product.fields.amount')}}</th>
+                    <th scope="col">{{__('tlumaczenie.product.fields.price')}}</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -38,13 +38,13 @@
 
                             <a href="{{route('products.show', $product->id)}}">
                                 <button class="btn btn-success btn-sm">
-                                    PODGLAD
+                                    {{__('tlumaczenie.button.show')}}
                                 </button>
                             </a>
 
                             <a href="{{route('products.edit', $product->id)}}">
                                 <button class="btn btn-primary btn-sm">
-                                    EDYCJA
+                                    {{__('tlumaczenie.button.edit')}}
                                 </button>
                             </a>
 
@@ -63,6 +63,7 @@
 @endsection
 @section('javascript')
     const deleteUrl = "{{url('products')}}/";
+    const confirmDelete = "{{ __('tlumaczenie.messages.confirm_delete') }}" ;
 @endsection
 
 @section('js-files')

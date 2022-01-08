@@ -43,7 +43,7 @@
                                             @if(!is_null($product->image_path))
                                                 <img src="{{ asset('storage/' . $product->image_path) }}" class="img-fluid mx-auto d-block" alt="Product image">
                                             @else
-                                                <img src="" class="img-fluid mx-auto d-block" alt="Product image">
+                                                <img src="{{asset('storage/products/photonull.png')}}" class="img-responsive img-fluid img-thumbnail" alt="image">
                                             @endif
 
                                         </div>

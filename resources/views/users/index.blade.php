@@ -36,6 +36,7 @@
 @endsection
 @section('javascript')
     const deleteUrl = "{{url('users')}}/";
+    const confirmDelete = "{{ __('tlumaczenie.messages.confirm_delete') }}" ;
 @endsection
 
 @section('js-files')
