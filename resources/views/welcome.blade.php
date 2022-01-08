@@ -65,10 +65,12 @@
                             <div class="col-12">
                                 <a class="btn btn-light">
                                     <i class="fas fa-arrow-up mr-2"></i> Back to top</a>
+
                                 <div class="btn-group float-md-right ml-3">
                                     <button type="button" class="btn btn-lg btn-light"> <span class="fa fa-arrow-left"></span> </button>
                                     <button type="button" class="btn btn-lg btn-light"> <span class="fa fa-arrow-right"></span> </button>
                                 </div>
+
                                 <div class="dropdown float-md-right">
                                     <label class="mr-2">View:</label>
                                     <a class="btn btn-light btn-lg dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">12 <span class="caret"></span></a>
@@ -78,6 +80,7 @@
                                         <a class="dropdown-item" href="#">48</a>
                                         <a class="dropdown-item" href="#">96</a>
                                     </div>
+                                    {{ $products->links() }}
                                 </div>
                             </div>
                         </div>
@@ -165,7 +168,9 @@
                 </div>
 
             </div>
+
         </div>
 
     </div>
+
 @endsection

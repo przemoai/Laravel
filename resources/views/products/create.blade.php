@@ -30,6 +30,11 @@
 
                             <div class="col-md-6">
                                 <input id="image"  type="file" class="form-control @error('image') is-invalid @enderror" name="image">
+                                @error('image')
+                                <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                         </div>
 
@@ -37,7 +42,7 @@
                             <label for="description" class="col-md-4 col-form-label text-md-right">Opis</label>
 
                             <div class="col-md-6">
-                                <textarea id="description" maxlength="1000" class="form-control @error('description') is-invalid @enderror" name="description" autofocus={{ old('description') }}>
+                                <textarea id="description" maxlength="1000" class="form-control @error('description') is-invalid @enderror" name="description" value="{{ old('description') }}"  autocomplete="description">
 
                                 </textarea>
                                 @error('description')
@@ -52,7 +57,7 @@
                             <label for="amount" class="col-md-4 col-form-label text-md-right">Ilość</label>
 
                             <div class="col-md-6">
-                                <input id="amount" min="1" type="number" class="form-control @error('phone_number') is-invalid @enderror" name="amount" value="{{ old('amount') }}" required autocomplete="amount" autofocus>
+                                <input id="amount" min="0" type="number" class="form-control @error('phone_number') is-invalid @enderror" name="amount" value="{{ old('amount') }}" required autocomplete="amount">
 
                                 @error('amount')
                                 <span class="invalid-feedback" role="alert">
