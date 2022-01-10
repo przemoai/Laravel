@@ -23,6 +23,7 @@
                     <th scope="col">{{__('harnasik.product.fields.description')}}</th>
                     <th scope="col">{{__('harnasik.product.fields.amount')}}</th>
                     <th scope="col">{{__('harnasik.product.fields.price')}}</th>
+                    <th scope="col">{{__('harnasik.product.fields.category')}}</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -34,6 +35,7 @@
                         <td>{{$product->description }}</td>
                         <td>{{$product->amount}}</td>
                         <td>{{$product->price}}</td>
+                        <td>{{$product->category->name ?? ''}}</td>
                         <td>
 
                             <a href="{{route('products.show', $product->id)}}">
@@ -63,7 +65,7 @@
 @endsection
 @section('javascript')
     const deleteUrl = "{{url('products')}}/";
-    const confirmDelete = "{{ __('harnasik.messages.confirm_delete') }}" ;
+    const confirmDelete = "{{ __('harnasik.messages.confirm_delete') }}";
 @endsection
 
 @section('js-files')

@@ -81,6 +81,25 @@
                             </div>
                         </div>
 
+                        <div class="row mb-3">
+                            <label for="category" class="col-md-4 col-form-label text-md-right">{{ __('shop.product.fields.category') }}</label>
+
+                            <div class="col-md-6">
+                                <select id="price" class="form-control @error('category_id') is-invalid @enderror" name="category_id">
+                                    <option value="" >Brak</option>
+                                    @foreach($categories as $category)
+                                        <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                    @endforeach
+                                </select>
+
+                                @error('category_id')
+                                <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
 
 
                         <div class="row mb-0">
