@@ -21,24 +21,30 @@ class WelcomeController extends Controller
     public function index(Request $request): View|JsonResponse
     {
         $filters = $request->query('filter');
+        $paginate = $request->query('paginate') ?? 8;
+
         $query = Product::query();
 
         if(!is_null($filters)){
-            $query = $query->whereIn('category_id', $filters['categories']);
+            if(array_key_exists('categories',$filters)){
+                $query = $query->whereIn('category_id', $filters['categories']);
+            }
+            if(!is_null($filters['price_min'])){
+                $query = $query->where('price','>=', $filters['price_min']);
+            }
+            if(!is_null($filters['price_max'])){
+                $query = $query->where('price','<=', $filters['price_max']);
+            }
 
-            $query = $query->where('price','>=', $filters['price_min']);
 
-            $query = $query->where('price','<=', $filters['price_max']);
-
-            return response()->json([
-                'data' => $query->get()
-            ]);
+            return response()->json($query->paginate($paginate));
         }
 
 
         return view('welcome',[
-            'products' => $query->paginate(10),
-            'categories' => ProductCategory::orderBy('name','ASC')->get()
+            'products' => $query->paginate($paginate),
+            'categories' => ProductCategory::orderBy('name','ASC')->get(),
+            'defaultImage' =>'storage/products/photonull.png',
         ]);
     }
 

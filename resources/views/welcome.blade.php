@@ -18,32 +18,33 @@
                                         <a class="dropdown-item" href="#">Best Selling</a>
                                     </div>
                                 </div>
-                                <div class="btn-group float-md-right ml-3">
+                                <div class="btn-group">
                                     <button type="button" class="btn btn-lg btn-light"> <span class="fa fa-arrow-left"></span> </button>
                                     <button type="button" class="btn btn-lg btn-light"> <span class="fa fa-arrow-right"></span> </button>
                                 </div>
-                                <div class="dropdown float-right">
-                                    <label class="mr-2">View:</label>
-                                    <a class="btn btn-lg btn-light dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">9 <span class="caret"></span></a>
-                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown" x-placement="bottom-end" style="will-change: transform; position: absolute; transform: translate3d(120px, 48px, 0px); top: 0px; left: 0px;">
-                                        <a class="dropdown-item" href="#">12</a>
-                                        <a class="dropdown-item" href="#">24</a>
-                                        <a class="dropdown-item" href="#">48</a>
-                                        <a class="dropdown-item" href="#">96</a>
+                                <div class="dropdown float-end">
+                                    <a class="btn btn-lg btn-light dropdown-toggle products-current-count" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">8 <span class="caret"></span></a>
+                                    <div class="dropdown-menu dropdown-menu-right products-count" aria-labelledby="navbarDropdown" x-placement="bottom-end" style="will-change: transform; position: absolute; transform: translate3d(120px, 48px, 0px); top: 0px; left: 0px;">
+                                        <a class="dropdown-item" href="#">8</a>
+                                        <a class="dropdown-item" href="#">16</a>
+                                        <a class="dropdown-item" href="#">32</a>
+
                                     </div>
                                 </div>
+
+
                             </div>
                         </div>
-                        <div class="row">
+                        <div class="row" id="products-wrapper">
                         @foreach($products as $product)
                                 <div class="col-6 col-md-6 col-lg-4 mb-3">
                                     <div class="card h-100 border-0">
                                         <div class="card-img-top">
 
                                             @if(!is_null($product->image_path))
-                                                <img src="{{ asset('storage/' . $product->image_path) }}" class="img-fluid mx-auto d-block" alt="Product image">
+                                                <img src="{{ asset('storage/' . $product->image_path) }}" class="img-fluid img-thumbnail mx-auto d-block" alt="Product image">
                                             @else
-                                                <img src="{{asset('storage/products/photonull.png')}}" class="img-responsive img-fluid img-thumbnail" alt="image">
+                                                <img src="{{ $defaultImage }}" class="img-responsive img-fluid img-thumbnail" alt="image">
                                             @endif
 
                                         </div>
@@ -53,7 +54,7 @@
                                                     {{$product->name}}</a>
                                             </h4>
                                             <h5 class="card-price small">
-                                                <i>{{$product->price}}</i>
+                                                <i>PLN {{$product->price}}</i>
                                             </h5>
                                         </div>
                                     </div>
@@ -72,14 +73,7 @@
                                 </div>
 
                                 <div class="dropdown float-md-right">
-                                    <label class="mr-2">View:</label>
-                                    <a class="btn btn-light btn-lg dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">12 <span class="caret"></span></a>
-                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="#">12</a>
-                                        <a class="dropdown-item" href="#">24</a>
-                                        <a class="dropdown-item" href="#">48</a>
-                                        <a class="dropdown-item" href="#">96</a>
-                                    </div>
+
                                     {{ $products->links() }}
                                 </div>
                             </div>
@@ -112,6 +106,13 @@
         </div>
     </div>
 @endsection
+
+@section('javascript')
+    const storagePath = "{{ asset('storage') }}/";
+    const defaultImage = '{{$defaultImage}}';
+
+@endsection
+
 @section('js-files')
     <script src="{{ asset("js/welcome.js") }}"></script>
 @endsection
