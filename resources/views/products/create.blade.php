@@ -82,7 +82,7 @@
                         </div>
 
                         <div class="row mb-3">
-                            <label for="category" class="col-md-4 col-form-label text-md-right">{{ __('shop.product.fields.category') }}</label>
+                            <label for="category" class="col-md-4 col-form-label text-md-right">{{ __('harnasik.product.fields.category') }}</label>
 
                             <div class="col-md-6">
                                 <select id="price" class="form-control @error('category_id') is-invalid @enderror" name="category_id">

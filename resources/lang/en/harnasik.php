@@ -2,8 +2,16 @@
 
 
 return [
+    'welcome'=>[
+        'products' => 'Products',
+        'categories' => 'Categories',
+        'price' => 'Price',
+        'filter' => 'Filtruj',
+    ],
+
     'messages' => [
         'confirm_delete' => 'Are you sure?',
+        'success_login' => 'Logged in successfully',
     ],
     'button' =>[
         'add' => 'Add',
@@ -27,6 +35,7 @@ return [
             'amount' => 'Amount',
             'price' => 'Price',
             'image' => 'Image',
+            'category' => 'Category',
 
         ],
         'add'=>[

@@ -14,7 +14,7 @@
                         </div>
                     @endif
 
-                    {{ __('You are logged in!') }}
+                    {{ __('harnasik.messages.login_success') }}
                 </div>
             </div>
         </div>

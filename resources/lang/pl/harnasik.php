@@ -2,8 +2,16 @@
 
 
 return [
+    'welcome'=>[
+        'products' => 'Produkty',
+        'categories' => 'Kategorie',
+        'price' => 'Cena',
+        'filter' => 'Filtruj',
+    ],
+
     'messages' => [
         'confirm_delete' => 'Czy na pewno chcesz usunąć?',
+        'login_success' => 'Pomyślnie zalogowano',
     ],
     'button' =>[
         'add' => 'Dodaj',
@@ -28,6 +36,7 @@ return [
             'amount' => 'Ilość',
             'price' => 'Cena',
             'image' => 'Grafika',
+            'category' => 'Kategoria',
 
         ],
         'add'=>[
