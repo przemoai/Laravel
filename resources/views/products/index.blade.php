@@ -43,21 +43,21 @@
 
                             <a href="{{route('products.show', $product->id)}}">
 
-                                <button class="btn btn-success btn-sm">
+                                <button class="btn btn-success ">
 {{--                                    {{__('harnasik.button.show')}}--}}
                                     <i class="bi bi-search"></i>
                                 </button>
                             </a>
 
                             <a href="{{route('products.edit', $product->id)}}">
-                                <button class="btn btn-primary btn-sm">
+                                <button class="btn btn-primary ">
 {{--                                    {{__('harnasik.button.edit')}}--}}
                                     <i class="bi bi-pencil-square"></i>
 
                                 </button>
                             </a>
 
-                            <button class="btn btn-danger btn-sm delete" data-id="{{$product->id}}">
+                            <button class="btn btn-danger  delete" data-id="{{$product->id}}">
                                 <i class="bi bi-trash"></i>
                             </button>
 
