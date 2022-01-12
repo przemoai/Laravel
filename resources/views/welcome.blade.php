@@ -53,6 +53,7 @@
                                                 <h5 class="card-price small">
                                                     <i>PLN {{$product->price}}</i>
                                                 </h5>
+                                                <button class="btn btn-success add-cart-button" data-id="{{$product->id}}"@guest disabled @endguest>{{ __('harnasik.product.add_to_cart') }}</button>
                                             </div>
                                         </div>
                                     </div>
@@ -101,8 +102,11 @@
 @endsection
 
 @section('javascript')
-    const storagePath = "{{ asset('storage') }}/";
-    const defaultImage = '{{$defaultImage}}';
+    const WELCOME_DATA = {
+     storagePath : "{{ asset('storage') }}/",
+     defaultImage : '{{$defaultImage}}',
+     addToCart: '{{url('cart')}}/'
+    }
 
 
 @endsection
