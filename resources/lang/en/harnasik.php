@@ -12,6 +12,9 @@ return [
     'messages' => [
         'confirm_delete' => 'Are you sure?',
         'success_login' => 'Logged in successfully',
+        'success_stored' => 'Added successfully!',
+        'success_updated' => 'Updated successfully!',
+        'delete' => 'Deleted successfully!',
     ],
     'button' =>[
         'add' => 'Add',
@@ -25,6 +28,7 @@ return [
         'first_name' => 'First Name',
         'last_name' => 'Last Name',
         'phone' => 'Phone Number',
+        'title' => 'Users list',
     ]
     ,
     'product' => [

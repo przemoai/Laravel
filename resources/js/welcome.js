@@ -44,6 +44,7 @@ $(function () {
                         '                                </div>'
                     $('div#products-wrapper').append(html)
                 })
+
             })
             .fail(function (response){
                 Swal.fire('Oopss...');
@@ -56,6 +57,10 @@ $(function () {
             return storagePath + product.image_path;
         }
         return defaultImage;
+    }
+
+    function countProducts(product){
+
     }
 
 });

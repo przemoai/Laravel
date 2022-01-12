@@ -8,6 +8,7 @@ use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 use Illuminate\View\Factory;
 
 class UserController extends Controller
@@ -91,6 +92,7 @@ class UserController extends Controller
         try {
             //throw new Exception();        //TEST WYJATKOW
             $user->delete();
+            Session::flash('status', __('harnasik.messages.delete'));
             return response()->json([
                 'status' => 'success'
             ]);

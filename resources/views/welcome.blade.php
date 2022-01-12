@@ -23,11 +23,11 @@
                                     <button type="button" class="btn btn-lg btn-light"> <span class="fa fa-arrow-right"></span> </button>
                                 </div>
                                 <div class="dropdown float-end">
-                                    <a class="btn btn-lg btn-light dropdown-toggle products-current-count" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">8 <span class="caret"></span></a>
+                                    <a class="btn btn-lg btn-light dropdown-toggle products-current-count" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">9 <span class="caret"></span></a>
                                     <div class="dropdown-menu dropdown-menu-right products-count" aria-labelledby="navbarDropdown" x-placement="bottom-end" style="will-change: transform; position: absolute; transform: translate3d(120px, 48px, 0px); top: 0px; left: 0px;">
-                                        <a class="dropdown-item" href="#">8</a>
-                                        <a class="dropdown-item" href="#">16</a>
-                                        <a class="dropdown-item" href="#">32</a>
+                                        <a class="dropdown-item" href="#">9</a>
+                                        <a class="dropdown-item" href="#">18</a>
+                                        <a class="dropdown-item" href="#">27</a>
 
                                     </div>
                                 </div>
@@ -36,30 +36,30 @@
                             </div>
                         </div>
                         <div class="row" id="products-wrapper">
-                        @foreach($products as $product)
-                                <div class="col-6 col-md-6 col-lg-4 mb-3">
-                                    <div class="card h-100 border-0">
-                                        <div class="card-img-top">
+                            @foreach($products as $product)
+                                    <div class="col-6 col-md-6 col-lg-4 mb-3">
+                                        <div class="card h-100 border-0">
+                                            <div class="card-img-top">
 
-                                            @if(!is_null($product->image_path))
-                                                <img src="{{ asset('storage/' . $product->image_path) }}" class="img-fluid img-thumbnail mx-auto d-block" alt="Product image">
-                                            @else
-                                                <img src="{{ $defaultImage }}" class="img-responsive img-fluid img-thumbnail" alt="image">
-                                            @endif
+                                                @if(!is_null($product->image_path))
+                                                    <img src="{{ asset('storage/' . $product->image_path) }}" class="img-fluid img-thumbnail mx-auto d-block" alt="Product image">
+                                                @else
+                                                    <img src="{{ $defaultImage }}" class="img-responsive img-fluid img-thumbnail" alt="image">
+                                                @endif
 
-                                        </div>
-                                        <div class="card-body text-center">
-                                            <h4 class="card-title">
-                                                <a href="{{route('products.show', $product->id)}}" class=" font-weight-bold text-dark text-uppercase small">
-                                                    {{$product->name}}</a>
-                                            </h4>
-                                            <h5 class="card-price small">
-                                                <i>PLN {{$product->price}}</i>
-                                            </h5>
+                                            </div>
+                                            <div class="card-body text-center">
+                                                <h4 class="card-title">
+                                                    <a href="{{route('products.show', $product->id)}}" class=" font-weight-bold text-dark text-uppercase small">
+                                                        {{$product->name}}</a>
+                                                </h4>
+                                                <h5 class="card-price small">
+                                                    <i>PLN {{$product->price}}</i>
+                                                </h5>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                        @endforeach
+                            @endforeach
 
                         </div>
                         <div class="row sorting mb-5 mt-5">
@@ -72,16 +72,16 @@
                                     <button type="button" class="btn btn-lg btn-light"> <span class="fa fa-arrow-right"></span> </button>
                                 </div>
 
-                                <div class="dropdown float-md-right">
-
+                                <div class="dropdown float-md-right product-links">
                                     {{ $products->links() }}
                                 </div>
                             </div>
                         </div>
+
                     </div>
                 </div>
                 <form class="col-md-4 order-md-1 col-lg-3 sidebar-filter">
-                    <h3 class="mt-0 mb-5">{{__('harnasik.welcome.products')}} <span class="text-primary">{{count($products)}}</span></h3>
+{{--                    <h3 class="mt-0 mb-5">{{__('harnasik.welcome.products')}} <span class="text-primary">{{count($products)}}</span></h3>--}}
                     <h6 class="text-uppercase font-weight-bold mb-3">{{__('harnasik.welcome.categories')}}</h6>
                     @foreach($categories as $category)
                         <div class="mt-2 mb-2 pl-2">
@@ -110,6 +110,7 @@
 @section('javascript')
     const storagePath = "{{ asset('storage') }}/";
     const defaultImage = '{{$defaultImage}}';
+
 
 @endsection
 

@@ -3,6 +3,14 @@
 @section('content')
 
 <div class="container">
+    @include('helpers.messages')
+    <div class="row text-white">
+        <div class="col-6">
+            <h1>{{__('harnasik.user.title')}}</h1>
+        </div>
+
+
+    </div>
     <table class="table table-hover table-dark">
         <thead>
         <tr>
@@ -11,6 +19,7 @@
             <th scope="col">{{__('harnasik.user.first_name')}}</th>
             <th scope="col">{{__('harnasik.user.last_name')}}</th>
             <th scope="col">{{__('harnasik.user.phone')}}</th>
+            <th scope="col"></th>
         </tr>
         </thead>
         <tbody>

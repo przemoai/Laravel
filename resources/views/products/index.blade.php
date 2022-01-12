@@ -2,6 +2,7 @@
 
 @section('content')
 <div class="container">
+    @include('helpers.messages')
         <div class="row text-white">
             <div class="col-6">
                 <h1>{{__('harnasik.product.add.header')}}</h1>

@@ -11,7 +11,10 @@ return [
 
     'messages' => [
         'confirm_delete' => 'Czy na pewno chcesz usunąć?',
-        'login_success' => 'Pomyślnie zalogowano',
+        'login_success' => 'Pomyślnie zalogowano!',
+        'success_stored' => 'Pomyślnie dodano!',
+        'success_updated' => 'Pomyślnie zaktualizowano!',
+        'delete' => 'Pomyślnie usunięto!',
     ],
     'button' =>[
         'add' => 'Dodaj',
@@ -25,12 +28,12 @@ return [
         'first_name' => 'Imię',
         'last_name' => 'Nazwisko',
         'phone' => 'Nr telefonu',
+        'title' => 'Lista użytkowników',
     ]
 
     ,
     'product' => [
         'fields'=> [
-
             'name' => 'Nazwa',
             'description' => 'Opis',
             'amount' => 'Ilość',

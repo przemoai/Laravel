@@ -9,6 +9,7 @@ use Exception;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Session;
 use Illuminate\View\View;
 use Psy\Util\Json;
 
@@ -53,7 +54,7 @@ class ProductController extends Controller
             $product->image_path = $request->file('image')->store('products');
         }
         $product -> save();
-        return redirect(route('products.index'));
+        return redirect(route('products.index'))->with('status',__('harnasik.messages.success_stored'));
     }
 
     /**
@@ -100,7 +101,7 @@ class ProductController extends Controller
 
         }
         $product->save();
-        return redirect(route('products.index'));
+        return redirect(route('products.index'))->with('status',__('harnasik.messages.success_updated'));
     }
 
     /**
@@ -115,6 +116,7 @@ class ProductController extends Controller
         try {
             //throw new Exception();        //TEST WYJATKOW
             $product->delete();
+            Session::flash('status', __('harnasik.messages.delete'));
             return response()->json([
                 'status' => 'success'
             ]);
