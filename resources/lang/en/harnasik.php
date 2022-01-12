@@ -45,6 +45,8 @@ return [
         'add'=>[
             'title' => 'Add product',
             'header' => 'List of products',
+            'button' => 'Add',
+
         ]
         ,
         'edit'=>[

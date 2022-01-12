@@ -3,13 +3,13 @@
 @section('content')
 <div class="container">
     @include('helpers.messages')
-        <div class="row text-white">
+        <div class="row text-black">
             <div class="col-6">
-                <h1>{{__('harnasik.product.add.header')}}</h1>
+                <h1><i class="bi bi-list"></i> {{__('harnasik.product.add.header')}}</h1>
             </div>
             <div class="col-6 ">
                 <a class="float-end" href="{{route('products.create')}}">
-                    <button type="button" class="btn btn-primary">Dodaj</button>
+                    <button type="button" class="btn btn-primary"><i class="bi bi-plus-square"> </i>   {{__('harnasik.product.add.button')}}</button>
                 </a>
             </div>
 
@@ -25,6 +25,8 @@
                     <th scope="col">{{__('harnasik.product.fields.amount')}}</th>
                     <th scope="col">{{__('harnasik.product.fields.price')}}</th>
                     <th scope="col">{{__('harnasik.product.fields.category')}}</th>
+                    <th scope="col"></th>
+
                 </tr>
                 </thead>
                 <tbody>
@@ -40,19 +42,23 @@
                         <td>
 
                             <a href="{{route('products.show', $product->id)}}">
+
                                 <button class="btn btn-success btn-sm">
-                                    {{__('harnasik.button.show')}}
+{{--                                    {{__('harnasik.button.show')}}--}}
+                                    <i class="bi bi-search"></i>
                                 </button>
                             </a>
 
                             <a href="{{route('products.edit', $product->id)}}">
                                 <button class="btn btn-primary btn-sm">
-                                    {{__('harnasik.button.edit')}}
+{{--                                    {{__('harnasik.button.edit')}}--}}
+                                    <i class="bi bi-pencil-square"></i>
+
                                 </button>
                             </a>
 
                             <button class="btn btn-danger btn-sm delete" data-id="{{$product->id}}">
-                                X
+                                <i class="bi bi-trash"></i>
                             </button>
 
                         </td>

@@ -4,9 +4,9 @@
 
 <div class="container">
     @include('helpers.messages')
-    <div class="row text-white">
+    <div class="row text-black">
         <div class="col-6">
-            <h1>{{__('harnasik.user.title')}}</h1>
+            <h1><i class="bi bi-people-fill"></i> {{__('harnasik.user.title')}}</h1>
         </div>
 
 
@@ -33,7 +33,7 @@
                 <td>{{$user->phone_number}}</td>
                 <td>
                     <button class="btn btn-danger btn-sm delete" data-id="{{$user->id}}">
-                        X
+                        <i class="bi bi-trash"></i>
                     </button>
                 </td>
             </tr>
