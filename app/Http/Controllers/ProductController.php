@@ -10,6 +10,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\View\View;
 use Psy\Util\Json;
 
@@ -93,11 +94,14 @@ class ProductController extends Controller
      */
     public function update(StoreProductRequest $request, Product $product):RedirectResponse
     {
+
         $product->fill($request->validated());
         if($request->hasFile('image')){
-
+            $oldImagepath = $product->image_path;
+            if(Storage::exists($oldImagepath)){
+                Storage::delete($oldImagepath);
+            }
             $product->image_path = $request->file('image')->store('products');
-
 
         }
         $product->save();

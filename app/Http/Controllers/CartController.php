@@ -1,15 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use App\DTOs\Cart\CartDto;
-use App\DTOs\Cart\CartItemDto;
-use App\Http\Requests\StoreProductRequest;
 use App\Models\Product;
+
+use App\ValueObjects\Cart;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
-use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Session;
 use Illuminate\View\View;
 
@@ -23,7 +18,7 @@ class CartController extends Controller
      */
     public function index(): view
     {
-        dd(Session::get('cart', new CartDto()));
+        dd(Session::get('cart', new Cart()));
         return view('home');
     }
 
@@ -35,27 +30,8 @@ class CartController extends Controller
      */
     public function store(Product $product): JsonResponse
     {
-
-        $cart = Session::get('cart', new CartDto());
-        $items = $cart->getItems();
-        if (Arr::exists($items,$product->id)){
-            $items[$product->id]->incrementTotalQuantity();
-        }else{
-            $cartItemDto = new CartItemDto();
-            $cartItemDto->setProductId($product->id);
-            $cartItemDto->setProductName($product->name);
-            $cartItemDto->setProductPrice($product->price);
-            $cartItemDto->setProductQuantity(1);
-            $cartItemDto->setProductImage($product->image_path);
-
-
-            $items[$product->id] = $cartItemDto;
-        }
-        $cart->setItems($items);
-        $cart->incrementTotalQuantity();
-        $cart->incrementTotalSum($product->price);
-
-        Session::put('cart', $cart);
+        $cart = Session::get('cart', new Cart());
+        Session::put('cart', $cart->addItem($product));
         return response()->json([
             'status' => 'success'
         ]);
