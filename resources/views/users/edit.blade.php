@@ -1,84 +1,98 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{__('harnasik.user.edit.title')}}</div>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header">Edycja użytkownika: {{ $user->email }}</div>
 
-                <div class="card-body">
-                    <form method="POST" action="{{ route('users.update',$user->id) }}">
-                        @csrf
-                        {{ method_field('PUT') }}
-                        <div class="row mb-3">
-                            <label for="city" class="col-md-4 col-form-label text-md-right">{{__('harnasik.city.fields.city')}}</label>
+                    <div class="card-body">
+                        <form method="POST" action="{{ route('users.update', $user->id) }}">
+                            {{ method_field('PUT') }}
+                            @csrf
 
-                            <div class="col-md-6">
-                                <input id="city" maxlength="255" type="text" class="form-control @error('city') is-invalid @enderror" name="city" value="" required autocomplete="city" autofocus>
+                            <div class="row mb-3">
+                                <label for="city" class="col-md-4 col-form-label text-md-right">Miasto</label>
 
-                                @error('city')
-                                <span class="invalid-feedback" role="alert">
+                                <div class="col-md-6">
+                                    <input id="city" type="text" maxlength="255" class="form-control @error('city') is-invalid @enderror" name="address[city]" value="@if($user->hasAddress()){{ $user->address->city }}@endif" required autocomplete="city" autofocus>
+
+                                    @error('city')
+                                    <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
-                                @enderror
+                                    @enderror
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="row mb-3">
-                            <label for="zip_code" class="col-md-4 col-form-label text-md-right">{{__('harnasik.city.fields.zip_code')}}</label>
+                            <div class="row mb-3">
+                                <label for="zip_code" class="col-md-4 col-form-label text-md-right">Kod pocztowy</label>
 
-                            <div class="col-md-6">
-                                <input id="zip_code" maxlength="6" type="text" class="form-control @error('zip_code') is-invalid @enderror" name="zip_code" value="" required autocomplete="zip_code">
+                                <div class="col-md-6">
+                                    <input id="zip_code" type="text" maxlength="6" class="form-control @error('zip_code') is-invalid @enderror" name="address[zip_code]" value="@if($user->hasAddress()){{ $user->address->zip_code }}@endif" required autocomplete="zip_code" autofocus>
 
-                                @error('zip_code')
-                                <span class="invalid-feedback" role="alert">
+                                    @error('zip_code')
+                                    <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
-                                @enderror
+                                    @enderror
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="row mb-3">
-                            <label for="street" class="col-md-4 col-form-label text-md-right">{{__('harnasik.city.fields.street')}}</label>
+                            <div class="row mb-3">
+                                <label for="street" class="col-md-4 col-form-label text-md-right">Ulica</label>
 
-                            <div class="col-md-6">
-                                <input id="street" maxlength="255" type="text" class="form-control @error('street') is-invalid @enderror" name="street" value="" required autocomplete="street">
+                                <div class="col-md-6">
+                                    <input id="street" type="text" maxlength="255" class="form-control @error('street') is-invalid @enderror" name="address[street]" value="@if($user->hasAddress()){{ $user->address->street }}@endif" required autocomplete="street" autofocus>
 
-                                @error('street')
-                                <span class="invalid-feedback" role="alert">
+                                    @error('street')
+                                    <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
-                                @enderror
+                                    @enderror
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="row mb-3">
-                            <label for="home_no" class="col-md-4 col-form-label text-md-right">{{__('harnasik.city.fields.home_no')}}</label>
+                            <div class="row mb-3">
+                                <label for="street_no" class="col-md-4 col-form-label text-md-right">Numer ulicy</label>
 
-                            <div class="col-md-6">
-                                <input id="home_no" maxlength="255" type="text" class="form-control @error('home_no') is-invalid @enderror" name="home_no" value="" required autocomplete="name">
+                                <div class="col-md-6">
+                                    <input id="street_no" type="text" maxlength="5" class="form-control @error('street_no') is-invalid @enderror" name="address[street_no]" value="@if($user->hasAddress()){{ $user->address->street_no }}@endif" required autocomplete="street_no" autofocus>
 
-                                @error('home_no')
-                                <span class="invalid-feedback" role="alert">
+                                    @error('street_no')
+                                    <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
-                                @enderror
+                                    @enderror
+                                </div>
                             </div>
-                        </div>
 
+                            <div class="row mb-3">
+                                <label for="home_no" class="col-md-4 col-form-label text-md-right">Numer domu</label>
 
-                        <div class="row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{__('harnasik.button.save_changes')}}
-                                </button>
+                                <div class="col-md-6">
+                                    <input id="home_no" type="text" maxlength="5" class="form-control @error('home_no') is-invalid @enderror" name="address[home_no]" value="@if($user->hasAddress()){{ $user->address->home_no }}@endif" required autocomplete="home_no" autofocus>
+
+                                    @error('home_no')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                </div>
                             </div>
-                        </div>
-                    </form>
+
+                            <div class="form-group row mb-0 float-right">
+                                <div class="col-md-6 offset-md-4">
+                                    <button type="submit" class="btn btn-primary">
+                                        {{ __('shop.button.save') }}
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 @endsection

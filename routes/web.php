@@ -44,16 +44,17 @@ Route::get('/', [WelcomeController::class, 'index']);
 Route::middleware(['auth', 'verified'])->group(function() {
     Route::middleware(['can:isAdmin'])->group(function() {
         Route::resource('products', ProductController::class);
+            });
 
-        Route::resource('users', UserController::class)->only([
-            'index','update','destroy'
-        ]);
+    Route::resource('users', UserController::class)->only([
+        'index', 'destroy'
+    ]);
 
-
-    });
     Route::get('/home', [HomeController::class, 'index'])->name('home');
     Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
-    Route::get('/users/{user}/edit', [UserController::class, 'edit'])->name('user.edit')->middleware('auth');
+    Route::get('/users/edit/{user}', [UserController::class, 'edit'])->name('users.edit')->middleware('auth');
+    Route::post('/users/{user}', [UserController::class, 'update'])->name('users.update')->middleware('auth');
+
     Route::delete('/cart/{product}', [CartController::class, 'destroy'])->name('cart.destroy');;
     Route::post('/cart/{product}', [CartController::class, 'store'])->name('cart.store');
 });

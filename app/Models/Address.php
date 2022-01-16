@@ -10,18 +10,22 @@ class Address extends Model
 {
     use HasFactory;
 
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
     protected $fillable = [
         'city',
         'zip_code',
         'street',
         'street_no',
         'home_no',
-        'user_id'
+        'user_id',
     ];
 
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
     }
-
 }

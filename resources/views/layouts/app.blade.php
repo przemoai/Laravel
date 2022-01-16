@@ -66,6 +66,7 @@
                                     <a class="dropdown-item" href="{{route('users.index')}}">{{__('harnasik.menu.users')}}</a>
                                     <a class="dropdown-item" href="{{route('products.index')}}">{{__('harnasik.menu.products')}}</a>
                                     @endcan
+                                        <a class="dropdown-item" href="{{route('users.edit', Auth::user()->id)}}">{{__('harnasik.menu.users.edit')}}</a>
                                         <a class="dropdown-item" href="{{route('cart.index')}}">{{__('harnasik.menu.cart')}}</a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateUserRequest;
+use App\Models\Address;
 use App\Models\Product;
 use App\Models\User;
 use Exception;
