@@ -70,7 +70,7 @@ $(function () {
                         '                                            </h5>\n' +
                         '                                        </div>\n'+
                         '<button id="add-cart-button" class="btn btn-success add-cart-button"'+getDisabled()+' data-id="'+product.id+'">'+
-                        '                   <i class="fas fa-cart-plus"></i> Dodaj do koszyka' +
+                        '                   Dodaj do koszyka' +
                         '                </button>' +
                         '                                    </div>\n' +
                         '                                </div>' +

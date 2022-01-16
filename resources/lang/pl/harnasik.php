@@ -2,6 +2,14 @@
 
 
 return [
+    'menu' =>[
+      'users' => 'Użytkownicy',
+      'products' => 'Produkty',
+      'edit' => 'Edytuj dane',
+      'cart' => 'Koszyk',
+      'logout' => 'Wyloguj',
+    ],
+
     'welcome'=>[
         'products' => 'Produkty',
         'categories' => 'Kategorie',
@@ -16,6 +24,7 @@ return [
         'success_updated' => 'Pomyślnie zaktualizowano!',
         'delete' => 'Pomyślnie usunięto!',
     ],
+
     'button' =>[
         'add' => 'Dodaj',
         'save_changes' => 'Zapisz zmiany',
@@ -23,15 +32,15 @@ return [
         'edit' => "Edycja",
 
     ],
+
     'user' => [
         'email' => "Email",
         'first_name' => 'Imię',
         'last_name' => 'Nazwisko',
         'phone' => 'Nr telefonu',
         'title' => 'Lista użytkowników',
-    ]
+    ],
 
-    ,
     'product' => [
         'fields'=> [
             'name' => 'Nazwa',
@@ -40,14 +49,21 @@ return [
             'price' => 'Cena',
             'image' => 'Grafika',
             'category' => 'Kategoria',
+            'totalPrice' => 'Wartość',
 
         ],
         'add'=>[
             'title' => 'Dodawanie produktu',
             'header' => 'Lista produktów',
-            'button' => 'Dodaj','button' => 'Dodaj',
+            'button' => 'Dodaj',
+
+        ],
+        'cart'=> [
+            'header'=>'Zawartość koszyka'
         ]
         ,
+        'add_to_cart'=> 'Dodaj do koszyka',
+
         'edit'=>[
             'title'=>'Edytowanie produktu',
 
