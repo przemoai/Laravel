@@ -79,10 +79,12 @@ class ProductController extends Controller
      */
     public function edit(Product $product): View
     {
-        return view("products.edit", [
-            'product' => $product,
-            'categories' => ProductCategory::all()
-        ]);
+
+            return view("products.edit", [
+                'product' => $product,
+                'categories' => ProductCategory::all()
+            ]);
+
     }
 
     /**

@@ -1,5 +1,6 @@
 import Swal from "sweetalert2";
 
+
 $(function () {
      $('div.products-count a').click(function (event){
          event.preventDefault();
@@ -13,33 +14,31 @@ $(function () {
         getProducts($('a.products-current-count').text());
     })
 
-    $('button.add-cart-button').click(function (event){
+    //$('button.add-cart-button').click(function(event)
+    $(document).on('click','#add-cart-button',function(){
         event.preventDefault();
         $.ajax({
-            type:"POST",
             method: "POST",
             url: WELCOME_DATA.addToCart + $(this).data('id')
-
         })
-            .done(function (respone){
+            .done(function () {
                 Swal.fire({
-                    title: 'Dodano do koszyka!',
+                    title: 'Brawo!',
+                    text: 'Produkt dodany do koszyka!',
                     icon: 'success',
                     showCancelButton: true,
-                    confirmButtonColor: '#3085d6',
-                    cancelButtonColor: '#d33',
-                    cancelButtonText: 'Kontynuuj zakupy',
-                    confirmButtonText: 'Przejdz do koszyka'
+                    confirmButtonText: '<i class="fas fa-cart-plus"></i> Przejdź do koszyka',
+                    cancelButtonText: '<i class="fas fa-shopping-bag"></i> Kontynuuj zakupy'
                 }).then((result) => {
                     if (result.isConfirmed) {
-                            alert('OK');
+                        window.location = WELCOME_DATA.listCart;
                     }
                 })
             })
-            .fail(function (){
-                Swal.fire('cos nie tak');
-            })
-    })
+            .fail(function () {
+                Swal.fire('Oops...', 'Wystąpił błąd', 'error');
+            });
+    });
 
     function getProducts(paginate){
         const form = $('form.sidebar-filter').serialize();
@@ -69,10 +68,17 @@ $(function () {
                         '                                            <h5 class="card-price small">\n' +
                         '                                                <i>PLN ' + product.price + '</i>\n' +
                         '                                            </h5>\n' +
-                        '                                        </div>\n' +
+                        '                                        </div>\n'+
+                        '<button id="add-cart-button" class="btn btn-success add-cart-button"'+getDisabled()+' data-id="'+product.id+'">'+
+                        '                   <i class="fas fa-cart-plus"></i> Dodaj do koszyka' +
+                        '                </button>' +
                         '                                    </div>\n' +
-                        '                                </div>'
+                        '                                </div>' +
+                        ''
                     $('div#products-wrapper').append(html)
+
+
+
                 })
 
             })
@@ -89,8 +95,13 @@ $(function () {
         return WELCOME_DATA.defaultImage;
     }
 
-    function countProducts(product){
-
+    function getDisabled() {
+        if (WELCOME_DATA.isGuest) {
+            return ' disabled';
+        }
+        return '';
     }
+
+
 
 });

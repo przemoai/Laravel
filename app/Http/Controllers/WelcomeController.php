@@ -6,6 +6,7 @@ use App\Models\Product;
 
 use App\Models\ProductCategory;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -45,6 +46,7 @@ class WelcomeController extends Controller
             'products' => $query->paginate($paginate),
             'categories' => ProductCategory::orderBy('name','ASC')->get(),
             'defaultImage' =>'storage/products/photonull.png',
+            'isGuest' => Auth::guest()
         ]);
     }
 

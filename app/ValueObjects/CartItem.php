@@ -2,6 +2,7 @@
 
 namespace App\ValueObjects;
 use App\Models\Product;
+use PhpParser\Node\Scalar\String_;
 
 class CartItem
 {
@@ -21,7 +22,7 @@ class CartItem
         $this->productId = $product->id;
         $this->productName = $product->name;
         $this->productPrice = $product->price;
-        $this->productImage = $product->Image_path;
+        $this->imagePath = $product->image_path;
         $this->quantity = $quantity;
     }
 
@@ -65,8 +66,15 @@ class CartItem
 
     public function getSum(): float
     {
-        return $this->price * $this->quantity;
+        return $this->productPrice * $this->quantity;
     }
+
+    public function getImage(): String
+    {
+       return is_null($this->imagePath) ?  asset('storage/products/photonull.png') : asset('storage/' . $this->imagePath);
+    }
+
+
 
 
 }

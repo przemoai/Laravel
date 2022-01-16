@@ -53,11 +53,13 @@
                                                 <h5 class="card-price small">
                                                     <i>PLN {{$product->price}}</i>
                                                 </h5>
-                                                <button class="btn btn-success add-cart-button" data-id="{{$product->id}}"@guest disabled @endguest>{{ __('harnasik.product.add_to_cart') }}</button>
                                             </div>
+                                            <button id="add-cart-button" class="btn btn-success add-cart-button " data-id="{{$product->id}}"@guest disabled @endguest>{{ __('harnasik.product.add_to_cart') }}</button>
                                         </div>
                                     </div>
                             @endforeach
+
+
 
                         </div>
                         <div class="row sorting mb-5 mt-5">
@@ -94,7 +96,7 @@
                     </div>
                     <input id="ex2" type="text" class="slider " value="50,150" data-slider-min="10" data-slider-max="200" data-slider-step="5" data-slider-value="[50,150]" data-value="50,150" style="display: none;">
                     <div class="divider mt-5 mb-5 border-bottom border-secondary"></div>
-                    <a href="#" class="btn btn-lg btn-block btn-primary mt-5" id="filter-button"><i class="bi bi-search"></i> {{__('harnasik.welcome.filter')}}</a>
+                    <a href="#" class="btn btn-lg btn-block btn-primary mt-5" id="filter-button"><i class="bi bi-search "></i> {{__('harnasik.welcome.filter')}}</a>
                 </form>
             </div>
         </div>
@@ -105,12 +107,17 @@
     const WELCOME_DATA = {
      storagePath : "{{ asset('storage') }}/",
      defaultImage : '{{$defaultImage}}',
-     addToCart: '{{url('cart')}}/'
+     addToCart: '{{url('cart')}}/',
+     listCart: '{{url('cart')}}',
+     isGuest: '{{ $isGuest }}',
+
     }
+
 
 
 @endsection
 
 @section('js-files')
     <script src="{{ asset("js/welcome.js") }}"></script>
+    <script> $.getScript("js/welcome.js"); </script>
 @endsection
